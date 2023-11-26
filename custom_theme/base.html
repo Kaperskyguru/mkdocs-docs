@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}
+    </title>
+
+    {% include "head.html" %}
+  </head>
+  <body>
+    <div class="bg-primary h-scren h-full">
+      <div class="mx-auto h-full px-8 xl:px-0" style="max-width: 1320px">
+        {% include "nav.html" %}
+
+        <div class="flex pt-20 relative">
+          {% include "sidebar.html" %} {%- if page and page.is_homepage %}
+
+          <!-- Include Home -->
+
+          {% include "home.html" %} {%- else %}
+          <!-- Include Content -->
+          {% include "content.html" %}
+
+          <!-- Include TOC -->
+          {% include "toc.html" %} {% endif %}
+        </div>
+      </div>
+    </div>
+    {%- for script in config.extra_javascript %} {{ script | script_tag }} {%-
+    endfor %}
+    <script src="{{ 'js/script.js'|url }}"></script>
+  </body>
+</html>
