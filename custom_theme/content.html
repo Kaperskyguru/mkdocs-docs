@@ -15,7 +15,10 @@
 
   <div class="border-t py-10 flex justify-end">
     <p class="text-gray-500 leading-5">
-      {{config.build_date_utc}} This page was last updated 4 months ago
+      This page was last updated on {%- if
+      page.meta.git_site_revision_date_localized_raw_date %}
+      {{page.meta.git_site_revision_date_localized_raw_date}} {%- else %}
+      'Install and activate "git-revision-date-localized" plugin' {%- endif %}
     </p>
   </div>
 </main>
